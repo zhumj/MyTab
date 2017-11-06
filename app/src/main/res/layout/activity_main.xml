@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zhumj.mytab.MainActivity">
+
+    <com.zhumj.mytab.TabBarGroup
+        android:id="@+id/tabBarGroup_top"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.zhumj.mytab.TabBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:button="@null"
+            android:checked="true"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:text="Tab1"
+            app:hasIcon="false"
+            app:norm_color="#F4F4F4"
+            app:select_color="#AAAAAA"
+            app:form_color="#AAAAAA"
+            app:form_width="1dp"/>
+
+        <com.zhumj.mytab.TabBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:button="@null"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:text="Tab2"
+            app:hasIcon="false"
+            app:norm_color="#F4F4F4"
+            app:select_color="#AAAAAA"
+            app:form_color="#AAAAAA"
+            app:form_width="1dp"/>
+
+        <com.zhumj.mytab.TabBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:button="@null"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:text="Tab3"
+            app:hasIcon="false"
+            app:norm_color="#F4F4F4"
+            app:select_color="#AAAAAA"
+            app:form_color="#AAAAAA"
+            app:form_width="1dp"/>
+
+        <com.zhumj.mytab.TabBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:button="@null"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:text="Tab4"
+            app:hasIcon="false"
+            app:norm_color="#F4F4F4"
+            app:select_color="#AAAAAA"
+            app:form_color="#AAAAAA"
+            app:form_width="1dp"/>
+    </com.zhumj.mytab.TabBarGroup>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabBarGroup_top"
+        app:layout_constraintBottom_toTopOf="@+id/tabBarGroup_bottom">
+    </android.support.v4.view.ViewPager>
+
+    <com.zhumj.mytab.TabBarGroup
+        android:id="@+id/tabBarGroup_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </com.zhumj.mytab.TabBarGroup>
+
+</android.support.constraint.ConstraintLayout>

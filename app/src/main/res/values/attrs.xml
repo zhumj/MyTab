@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TabBarItem">
+        <!--默认状态icon-->
+        <attr name="icon_norm" format="reference"/>
+        <!--选中状态icon-->
+        <attr name="icon_select" format="reference"/>
+        <!--默认背景颜色-->
+        <attr name="norm_color" format="color"/>
+        <!--选中时的颜色-->
+        <attr name="select_color" format="color"/>
+        <!--边框线的宽度-->
+        <attr name="form_width" format="dimension"/>
+        <!--边框线的颜色-->
+        <attr name="form_color" format="color"/>
+        <!--是否有背景图（为true的时候为仿微信首页下边菜单栏样式）-->
+        <attr name="hasIcon" format="boolean"/>
+    </declare-styleable>
+
+</resources>
