@@ -21,11 +21,13 @@ class TabBarGroup
 
     private var mViewPager: ViewPager? = null
     private var listener: OnTabItemClickListener? = null
+    //是否在外部控制TabItem的点击事件
+    private var isOutListener = false
 
-    fun setViewPager(viewPager: ViewPager, needItemLayouts: Boolean = false, tBuild: Builder? = build) {
+    fun setViewPager(viewPager: ViewPager, isOutListener: Boolean = false, position: Int = 0, needItemLayouts: Boolean = false, tBuild: Builder? = build) {
         this.mViewPager = viewPager
         this.mViewPager?.addOnPageChangeListener(this)
-
+        this.isOutListener = isOutListener
         if (needItemLayouts) {
             try {
                 val mTabList = tBuild?.getTabList() ?: ArrayList()
@@ -53,6 +55,7 @@ class TabBarGroup
             }
         }
 
+        setClickedViewChecked(position)
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
@@ -60,7 +63,9 @@ class TabBarGroup
         for (i in 0 until childCount) {
             getChildAt(i).setOnClickListener {
                 listener?.onTabItemClick(getChildAt(i), i)
-                setClickedViewChecked(i)
+                if (!isOutListener) {
+                    setClickedViewChecked(i)
+                }
             }
         }
     }
@@ -73,6 +78,7 @@ class TabBarGroup
             mViewPager?.setCurrentItem(position, false)
         }
     }
+
 
     override fun onPageScrollStateChanged(state: Int) {
 
@@ -127,67 +133,51 @@ class TabBarGroup
             return this
         }
 
-        fun getTabList(): ArrayList<TabBean> {
-            return tabList ?: ArrayList()
-        }
+        fun getTabList(): ArrayList<TabBean> = tabList ?: ArrayList()
 
         fun setTitleSize(sp: Float): Builder {
             this.mTitleSize = sp
             return this
         }
 
-        fun getTitleSize(): Float {
-            return mTitleSize
-        }
+        fun getTitleSize(): Float = mTitleSize
 
         fun setTitleColor(titleColor: Int): Builder {
             this.mTitleColor = titleColor
             return this
         }
 
-        fun getTitleColor(): Int {
-            return mTitleColor
-        }
+        fun getTitleColor(): Int = mTitleColor
 
         fun setNormColor(normColor: Int): Builder {
             this.mNormColor = normColor
             return this
         }
 
-        fun getNormColor(): Int {
-            return mNormColor
-        }
+        fun getNormColor(): Int = mNormColor
 
         fun setSelectColor(selectColor: Int): Builder {
             this.mSelectColor = selectColor
             return this
         }
 
-        fun getSelectColor(): Int {
-            return mSelectColor
-        }
+        fun getSelectColor(): Int = mSelectColor
 
         fun setFormWidth(formWidth: Float): Builder {
             this.mFormWidth = formWidth
             return this
         }
 
-        fun getFormWidth(): Float {
-            return mFormWidth
-        }
+        fun getFormWidth(): Float = mFormWidth
 
         fun setFormColor(formColor: Int): Builder {
             this.mFormColor = formColor
             return this
         }
 
-        fun getFormColor(): Int {
-            return mFormColor
-        }
+        fun getFormColor(): Int = mFormColor
 
-        fun build(context: Context): TabBarGroup {
-            return TabBarGroup(this, context, null)
-        }
+        fun build(context: Context): TabBarGroup = TabBarGroup(this, context, null)
     }
 
     class TabBean {

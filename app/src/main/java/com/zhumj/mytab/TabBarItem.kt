@@ -101,10 +101,6 @@ class TabBarItem
             mIconCanvas = Canvas(mSelectingBackgroundBitmap)
         }
 
-        val fontMetrics = paint.fontMetrics
-        mTextHeight = Math.ceil((fontMetrics.descent - fontMetrics.ascent).toDouble()).toFloat()
-        mTextWidth = StaticLayout.getDesiredWidth(text, paint)
-
         if (isChecked) {
             mAlpha = 255
         }
@@ -116,6 +112,14 @@ class TabBarItem
         } else {
             throw RuntimeException("The Drawable must be an instance of BitmapDrawable")
         }
+    }
+
+    override fun setText(text: CharSequence?, type: BufferType?) {
+        super.setText(text, type)
+        val fontMetrics = paint.fontMetrics
+        mTextHeight = Math.ceil((fontMetrics.descent - fontMetrics.ascent).toDouble()).toFloat()
+        mTextWidth = StaticLayout.getDesiredWidth(text, paint)
+        invalidate()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -235,76 +239,58 @@ class TabBarItem
             return this
         }
 
-        fun getHasIcon(): Boolean {
-            return hasIcon
-        }
+        fun getHasIcon(): Boolean = hasIcon
 
         fun setTitle(title: String): Builder {
             this.mTitle = title
             return this
         }
 
-        fun getTitle(): String {
-            return mTitle
-        }
+        fun getTitle(): String = mTitle
 
         fun setNormColor(normColor: Int): Builder {
             this.mNormColor = normColor
             return this
         }
 
-        fun getNormColor(): Int {
-            return mNormColor
-        }
+        fun getNormColor(): Int = mNormColor
 
         fun setSelectColor(selectColor: Int): Builder {
             this.mSelectColor = selectColor
             return this
         }
 
-        fun getSelectColor(): Int {
-            return mSelectColor
-        }
+        fun getSelectColor(): Int = mSelectColor
 
         fun setNormDrawable(normDrawable: Drawable?): Builder {
             this.mNormDrawable = normDrawable
             return this
         }
 
-        fun getNormDrawable(): Drawable? {
-            return mNormDrawable
-        }
+        fun getNormDrawable(): Drawable? = mNormDrawable
 
         fun setSelectDrawable(selectDrawable: Drawable?): Builder {
             this.mSelectDrawable = selectDrawable
             return this
         }
 
-        fun getSelectDrawable(): Drawable? {
-            return mSelectDrawable
-        }
+        fun getSelectDrawable(): Drawable? = mSelectDrawable
 
         fun setFormWidth(formWidth: Float): Builder {
             this.mFormWidth = formWidth
             return this
         }
 
-        fun getFormWidth(): Float {
-            return mFormWidth
-        }
+        fun getFormWidth(): Float = mFormWidth
 
         fun setFormColor(formColor: Int): Builder {
             this.mFormColor = formColor
             return this
         }
 
-        fun getFormColor(): Int {
-            return mFormColor
-        }
+        fun getFormColor(): Int = mFormColor
 
-        fun build(): TabBarItem {
-            return TabBarItem(this, context, null)
-        }
+        fun build(): TabBarItem = TabBarItem(this, context, null)
     }
 
 }

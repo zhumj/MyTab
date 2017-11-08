@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getResourcesDrawable(id: Int): Drawable {
-        return ContextCompat.getDrawable(this, id) as Drawable
+        return ContextCompat.getDrawable(this, id)
     }
 
     private fun initView() {
